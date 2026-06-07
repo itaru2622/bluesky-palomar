@@ -9,6 +9,8 @@ RUN apk add --no-cache build-base make git
 ADD . /dockerbuild
 WORKDIR /dockerbuild
 
+RUN go mod tidy
+
 # timezone data for alpine builds
 ENV GOEXPERIMENT=loopvar
 RUN GIT_VERSION=$(git describe --tags --long --always) && \
